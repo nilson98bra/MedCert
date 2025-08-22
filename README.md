@@ -56,4 +56,5 @@ Sistema web para gestão de atestados médicos, com cadastro de colaboradores, l
 - Token JWT válido por **4 horas**
 - Validador de **CPF**
 - **Fallback** implementado: caso a API da OMS falhe, os dados são buscados no banco de dados. As informações são salvas e permanecem disponíveis por **30 dias**.
+- Foi criado um sistema customizado de erro no **Backend**
 
