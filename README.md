@@ -10,45 +10,50 @@ Sistema web para gestão de atestados médicos, com cadastro de colaboradores, l
 </p>
 
 ### Backend
-  - NestJS como Framework
-  - MongoDB utilizando o Mongoose como ORM
-  - Validação dos dados dos controllers com class-validator
-  - Autenticação utilizando Tokens Http Only
+- NestJS como framework
+- MongoDB utilizando o Mongoose como **ORM**
+- Validação dos dados dos controllers com **class-validator**
+- Autenticação utilizando tokens **HttpOnly**
 
 ### Frontend
-  - VueJS como Framework
-  - Validação dos forms com Zod
+- Vue.js como framework
+- Validação dos formulários com **Zod**
 
 ## Como utilizar
 
-- Primeiramente, deve ser criado arquivos .env da raz das pastas backend e frontend, de acordo com o .env example respectivos de cada pasta
-- No caso do backend, tem algumas regras
-- - MONGO_INITDB_ROOT_USERNAME= defina uma que deseje
-- - MONGO_INITDB_ROOT_PASSWORD= defina uma que deseje
-- - MONGODB_URI= a senha deve seguir esse padrao: mongodb://{{MONGO_INITDB_ROOT_USERNAME}}:{{MONGO_INITDB_ROOT_PASSWORD}}@mongodb:27017/medcert-db?authSource=admin
-- - SECRET= essa é a senha que vc deve criar para criptografar o JWT
-- - NODE_ENV= pode deixar como "development"
-- - PORT= pode deixar como "3000"
-- - ICD_CLIENT_ID = vai ser pego na sua conta criada na API da OMS
-- - ICD_CLIENT_SECRET = vai ser pego na sua conta criada na API da OMS
-- - OBS: Algumas informações eu não passaria via README, mas é para faciltiar o usuário.
+- Crie os arquivos `.env` na **raiz** das pastas `backend` e `frontend`, de acordo com o `.env.example` respectivo de cada pasta.
 
-- No frontend:
-- - VITE_API=http://localhost:3000
+- No **backend**, configure:
+  - `MONGO_INITDB_ROOT_USERNAME=` defina o usuário desejado
+  - `MONGO_INITDB_ROOT_PASSWORD=` defina a senha desejada
+  - `MONGODB_URI=` use o padrão:
+    ```
+    mongodb://{{MONGO_INITDB_ROOT_USERNAME}}:{{MONGO_INITDB_ROOT_PASSWORD}}@mongodb:27017/medcert-db?authSource=admin
+    ```
+  - `SECRET=` senha que você deve criar para assinar/criptografar o JWT
+  - `NODE_ENV=` pode deixar como `"development"`
+  - `PORT=` pode deixar como `"3000"`
+  - `ICD_CLIENT_ID=` obtido na sua conta da API da OMS
+  - `ICD_CLIENT_SECRET=` obtido na sua conta da API da OMS  
+  - **Observação:** Algumas dessas informações normalmente não seriam expostas em um README, mas estão aqui para facilitar a configuração.
 
-## Como acesar a API da OMS
+- No **frontend**:
+  - `VITE_API=http://localhost:3000`
 
-- Primeiramente, realize o cadastro nessa URL https://icd.who.int/icdapi/Account/Register
-- Ao se conectar, no centro do site, em API Access, vai aparecer um link chamado 'View API access key(s)' e clique nessa, aonde vai ter acesso as credenciais
-- com acesso as suas credenciais, coloque na sua viariavel de ambiente do backend
+## Como acessar a API da OMS
+
+- Cadastre-se em: https://icd.who.int/icdapi/Account/Register  
+- Após o login, em **API Access**, clique em **View API access key(s)** para visualizar suas credenciais.  
+- Com as credenciais em mãos, preencha as variáveis de ambiente no backend.
 
 ## Como rodar o projeto
 
-- Na raiz de toda aplicação, de o comando docker-compose up
-- acesse por aqui: http://localhost:5173/
+- Na raiz da aplicação, execute: docker-compose up
+- Acesse pelo navegador: http://localhost:5173/
 
-## Questões tecnicas
+## Questões técnicas
 
-- Token JWT válido por 4 horas
-- Validador de CPF
-- Foi criado um fallback, caso a api da OMS falhe, onde os dados são buscado no banco de dados. Essas informações são salvas e ficam no banco por 30 dias.
+- Token JWT válido por **4 horas**
+- Validador de **CPF**
+- **Fallback** implementado: caso a API da OMS falhe, os dados são buscados no banco de dados. As informações são salvas e permanecem disponíveis por **30 dias**.
+
